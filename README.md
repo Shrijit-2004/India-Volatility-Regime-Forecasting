@@ -126,7 +126,7 @@ streamlit run dashboard.py
 
 **Shrijit Ghosh**
 
-B.Sc. Economics (Hons.) | M.Sc. Data Science
+B.Sc. Economics (Hons.) 
 
 Interested in Financial Data Science, Quantitative Finance, Risk Analytics, Machine Learning, and Time Series Forecasting.
 
