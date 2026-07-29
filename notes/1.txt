@@ -1,0 +1,22 @@
+## GARCH vs EGARCH — Nifty 50 (2015–2026)
+
+- GARCH(1,1): alpha=0.104, beta=0.871 (alpha+beta=0.975 → high persistence)
+- EGARCH(1,1): alpha=0.166, gamma=-0.097 (p<0.001), beta=0.967
+- EGARCH AIC (7219.67) < GARCH AIC (7285.59) → EGARCH fits significantly better
+- Negative, significant gamma confirms the LEVERAGE EFFECT: negative shocks
+  increase future volatility more than positive shocks of equal size.
+- Conclusion: Nifty 50 volatility is asymmetric; EGARCH is the preferred
+  classical benchmark model going forward.
+## GARCH vs EGARCH — BSESN (2015–2026)
+- GARCH(1,1): alpha=0.098, beta=0.880 (persistence=0.978)
+- EGARCH(1,1): alpha=0.159, gamma=-0.094 (p<0.001), beta=0.970
+- EGARCH AIC (7227.67) < GARCH AIC (7290.51)
+- Leverage effect confirmed, nearly identical magnitude to NSEI (-0.094 vs -0.097)
+- Conclusion: Nifty and Sensex show consistent, near-identical volatility
+  dynamics — expected given high constituent overlap between the two indices.
+## XGBoost Results
+- Realized Vol: RMSE=0.436, MAE=0.278 — vix_lag1 dominant feature (46%),
+  EGARCH_vol_lag1 second (13.8%) — suggests implied vol (VIX) has strong
+  predictive power over realized vol, consistent with literature.
+- VIX prediction: RMSE=1.466, MAE=0.958 — vix_lag1 dominant (65%, expected
+  given VIX autocorrelation).
