@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="India Volatility & Regime Dashboard", layout="wide")
 
-st.title("🇮🇳 Indian Equity Volatility Forecasting & Regime Detection")
+st.title(" India Market Volatility Dashboard 📈")
 st.markdown("Nifty 50 | GARCH/EGARCH | XGBoost | LSTM | HMM Regime Detection")
 
 @st.cache_data  
