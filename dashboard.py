@@ -17,25 +17,35 @@ def load_data():
 
 raw_data, regime_data, comparison_data = load_data()
 
-st.sidebar.header("Settings")
+st.subheader("📅 Select Date Range")
+
 min_date = raw_data.index.min().date()
 max_date = raw_data.index.max().date()
 
-date_range = st.sidebar.date_input(
-    "Select date range",
-    value=(max_date - pd.Timedelta(days=365), max_date),
-    min_value=min_date,
-    max_value=max_date
-)
+col1, col2 = st.columns(2)
 
-if len(date_range) == 2:
-    start, end = date_range
-    filtered_raw = raw_data.loc[str(start):str(end)]
-    filtered_regime = regime_data.loc[str(start):str(end)]
-else:
-    filtered_raw = raw_data
-    filtered_regime = regime_data
+with col1:
+    start = st.date_input(
+        "Start date",
+        value=max_date - pd.Timedelta(days=365),
+        min_value=min_date,
+        max_value=max_date
+    )
 
+with col2:
+    end = st.date_input(
+        "End date",
+        value=max_date,
+        min_value=min_date,
+        max_value=max_date
+    )
+
+if start > end:
+    st.error("⚠️ Start date must be before end date. Please adjust your selection.")
+    st.stop()  
+    
+filtered_raw = raw_data.loc[str(start):str(end)]
+filtered_regime = regime_data.loc[str(start):str(end)]
 st.subheader("Nifty 50 Price")
 st.line_chart(filtered_raw["NSEI"])
 
